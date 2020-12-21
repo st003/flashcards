@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         getNewWord();
 
         document.getElementById('flipCardBtn').addEventListener('click', () => {
-            // hide flip button
+            // hide flip button and japanese
+            document.getElementById('jp').style.display = 'none';
             document.getElementById('flipCardBtn').style.display = 'none';
             // reveal english text and next button
             document.getElementById('en').style.display = 'block';
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('en').style.display = 'none';
             // reveal flip card button and request a new word
             document.getElementById('flipCardBtn').style.display = 'block';
+            document.getElementById('jp').style.display = 'block';
             getNewWord();
         })
     }
