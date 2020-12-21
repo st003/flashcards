@@ -1,7 +1,18 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		{% load static %}
+
+		<!-- custom CSS -->
+		<link rel="stylesheet" href="{% static 'words/css/words.css' %}">
+
 		<title>{% block title %}{% endblock %}</title>
 	</head>
-	<body>{% block public %}{% endblock %}</body>
+	<body>
+		{% block public %}{% endblock %}
+
+		<!-- custom JS -->
+		<script src="{% static 'words/js/words.js' %}"></script>
+
+	</body>
 </html>
