@@ -1,7 +1,10 @@
-function getNewWord() {
-    fetch('/get_word/')
+function getNewWord(last_id) {
+    // set id to 0 if last_id is undefined
+    const id = last_id ? last_id : 0;
+    fetch(`/get_word/?id=${id}`)
         .then(res => res.json())
         .then(data => {
+            document.getElementById('id').innerHTML = data.id;
             document.getElementById('en').innerHTML = data.en;
             document.getElementById('jp').innerHTML = data.jp;
         })
@@ -32,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // reveal flip card button and request a new word
             document.getElementById('flipCardBtn').style.display = 'block';
             document.getElementById('jp').style.display = 'block';
-            getNewWord();
+            getNewWord(document.getElementById('id').value);
         })
     }
 })
