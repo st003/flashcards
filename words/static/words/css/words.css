@@ -86,10 +86,10 @@ footer a:hover {
 
 
 
-#id, #en, #newCardBtn {
+#id, #jp, #newCardBtn {
     display: none;
 }
 
-#en {
+#jp {
     color: darkgray;
 }
