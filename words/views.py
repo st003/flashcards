@@ -30,8 +30,6 @@ def get_word(request):
             break
     LAST_IDS.append(rand_id)
 
-    print(LAST_IDS)
-
     # get word
     w = Word.objects.get(pk=rand_id)
     return JsonResponse({'en': w.en, 'jp': w.jp})
