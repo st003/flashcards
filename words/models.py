@@ -2,15 +2,19 @@ from django.db import models
 
 
 class Word(models.Model):
-    """Model defining a word and it's translation."""
+    """Model defining a word and its translation."""
 
     NOUN = 1
     VERB = 2
     ADJ = 3
+    ADVERB = 4
+    PHRASE = 5
     CATEGORIES = [
         (NOUN, 'Noun'),
         (VERB, 'Verb'),
-        (ADJ, 'Adjective')
+        (ADJ, 'Adjective'),
+        (ADVERB, 'Adverb'),
+        (PHRASE, 'Phrase')
     ]
 
     en = models.CharField(max_length=64)
