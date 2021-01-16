@@ -1,13 +1,13 @@
 import random
-from collections import deque
 
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
 
 from .models import Word
 
 
-LAST_IDS = deque(maxlen=5)
+LAST_IDS = settings.LAST_IDS
 
 
 # VIEWS
@@ -29,6 +29,8 @@ def get_word(request):
         if rand_id not in LAST_IDS:
             break
     LAST_IDS.append(rand_id)
+
+    print(LAST_IDS)
 
     # get word
     w = Word.objects.get(pk=rand_id)

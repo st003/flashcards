@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import configparser
+from collections import deque
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+config = configparser.ConfigParser()
+config.read(f'{BASE_DIR}/config.ini')
 
 
 # Quick-start development settings - unsuitable for production
@@ -119,3 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# in memory list of recently request words
+LAST_IDS = deque(maxlen=int(config['DEFAULT'].get('requestedWordHistoryMax', 15)))
