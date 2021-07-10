@@ -9,12 +9,15 @@ class Word(models.Model):
     ADJ = 3
     ADVERB = 4
     PHRASE = 5
+    COUNTER = 6
+
     CATEGORIES = [
         (NOUN, 'Noun'),
         (VERB, 'Verb'),
         (ADJ, 'Adjective'),
         (ADVERB, 'Adverb'),
-        (PHRASE, 'Phrase')
+        (PHRASE, 'Phrase'),
+        (COUNTER, 'Counter')
     ]
 
     en = models.CharField(max_length=64)

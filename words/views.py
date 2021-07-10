@@ -25,9 +25,10 @@ def get_word(request):
 
     rand_id = 0
     while True:
-        rand_id = random.randrange(1, WORD_COUNT + 1)
+        rand_id = random.randrange(1, WORD_COUNT)
         if rand_id not in LAST_IDS:
             break
+
     LAST_IDS.append(rand_id)
 
     # get word
