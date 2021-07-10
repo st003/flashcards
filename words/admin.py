@@ -8,6 +8,7 @@ class WordAdmin(admin.ModelAdmin):
     list_display = ('en', 'jp', 'category')
     list_per_page = 25
     list_filter = ('category',)
+    search_fields = ['en']
 
 
 # Register your models here.
