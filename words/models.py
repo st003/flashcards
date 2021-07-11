@@ -4,7 +4,7 @@ from django.db import models
 class Topic(models.Model):
     """Topic for grouping words."""
 
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
 
     def __str__(self):
         return self.name
@@ -34,7 +34,7 @@ class Word(models.Model):
 
     en = models.CharField(max_length=64)
     jp = models.CharField(max_length=64)
-    category = models.IntegerField(null=True, blank=True, choices=CATEGORIES)
+    category = models.IntegerField(blank=True, null=True, db_index=True, choices=CATEGORIES)
     topics = models.ManyToManyField(Topic, blank=True, related_name="words")
 
     def __str__(self):

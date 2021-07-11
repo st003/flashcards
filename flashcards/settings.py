@@ -127,4 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # in memory list of recently request words
-LAST_IDS = deque(maxlen=int(config['DEFAULT'].get('requestedWordHistoryMax', 15)))
+DEFAULT_HISTORY_MEM = 15
+CONFIG_HISTORY_MEM = abs(config['DEFAULT'].get('requestedWordHistoryMax', DEFAULT_HISTORY_MEM))
+WORD_ID_MEM = deque(maxlen=CONFIG_HISTORY_MEM)
