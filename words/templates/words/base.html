@@ -1,24 +1,27 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		{% load static %}
+    <head>
+        {% load static %}
 
-		<!-- custom CSS -->
-		<link rel="stylesheet" href="{% static 'words/css/words.css' %}">
+        <!-- custom CSS -->
+        <link rel="stylesheet" href="{% static 'words/css/words.css' %}">
 
-		<title>{% block title %}{% endblock %}</title>
-	</head>
-	<body>
-		<header class="primaryColor">Language Learning Flash Cards</header>
+        <!-- vue.js-->
+        <script src="{% static 'words/js/vue.min.js' %}"></script>
 
-		{% block public %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <header class="primaryColor">Language Learning Flash Cards</header>
 
-		<footer class="primaryColor">
-			<a href="{% url 'admin:index' %}" target="_blank">Configuration</a>
-		</footer>
+        {% block public %}{% endblock %}
 
-		<!-- custom JS -->
-		<script src="{% static 'words/js/words.js' %}"></script>
+        <footer class="primaryColor">
+            <a href="{% url 'admin:index' %}" target="_blank">Configuration</a>
+        </footer>
 
-	</body>
+        <!-- custom JS -->
+        <script src="{% static 'words/js/words.js' %}"></script>
+
+    </body>
 </html>

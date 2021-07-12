@@ -1,38 +1,40 @@
-function getNewWord() {
-    fetch('/get_word/')
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById('en').innerHTML = data.en;
-            document.getElementById('jp').innerHTML = data.jp;
-        })
-}
-
-
-/* GLOBAL EVENT LISTENERS */
-document.addEventListener('DOMContentLoaded', () => {
-    
-    if (document.getElementById('flashcard')) {
-        
-        // on initial page load
-        getNewWord();
-
-        document.getElementById('flipCardBtn').addEventListener('click', () => {
-            // hide flip button and japanese
-            document.getElementById('en').style.display = 'none';
-            document.getElementById('flipCardBtn').style.display = 'none';
-            // reveal english text and next button
-            document.getElementById('jp').style.display = 'block';
-            document.getElementById('newCardBtn').style.display = 'block';
-        })
-
-        document.getElementById('newCardBtn').addEventListener('click', () => {
-            // hide english text and next button
-            document.getElementById('newCardBtn').style.display = 'none';
-            document.getElementById('jp').style.display = 'none';
-            // reveal flip card button and request a new word
-            document.getElementById('flipCardBtn').style.display = 'block';
-            document.getElementById('en').style.display = 'block';
-            getNewWord()
-        })
+var app = new Vue({
+    // required change b/c django uses {{ }}
+    // for its template rendering
+    delimiters: ['[[', ']]'],
+    el: '#app',
+    data: {
+        count: 0,
+        en: '',
+        jp: '',
+        cardIsFlipped: false,
+        showFilters: false
+    },
+    created: function () {
+        this.getNewWord()
+    },
+    methods: {
+        getNewWord() {
+            fetch('/get_word/')
+                .then(res => res.json())
+                .then(data => {
+                    this.count = data.count
+                    this.en = data.en
+                    this.jp = data.jp
+                })
+        },
+        openFilters() {
+            this.showFilters = true
+        },
+        closeFilters() {
+            this.showFilters = false
+        },
+        flipCard() {
+            this.cardIsFlipped = true
+        },
+        nextCard() {
+            this.getNewWord()
+            this.cardIsFlipped = false
+        }
     }
 })

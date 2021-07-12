@@ -5,16 +5,31 @@
 {% endblock %}
 
 {% block public %}
-    <main id="flashcard">
+    <main id="app">
+        <!-- <div>
+            <span>Cards: [[ count ]]</span>
+            <button @click="openFilters()">Filters</button>
+        </div> -->
         <div class="content">
             <div class="word">
-                <span id="jp"></span>
-                <span id="en"></span>
+                <span v-if="cardIsFlipped" class="jp">[[ jp ]]</span>
+                <span v-else>[[ en ]]</span>
             </div>
             <div>
-                <button id="flipCardBtn" class="btn secondaryColor">Flip Card</button>
-                <button id="newCardBtn" class="btn tertiaryColor">Next Card</button>
+                <button
+                    v-if="cardIsFlipped"
+                    class="btn tertiaryColor"
+                    @click="nextCard()"
+                >Next Card</button>
+                <button
+                    v-else class="btn secondaryColor"
+                    @click="flipCard()"
+                >Flip Card</button>
             </div>
         </div>
+        <!-- <div v-if="showFilters">
+            Filters Pop-up
+            <button @click="closeFilters()">Close</button>
+        </div> -->
     </main>
 {% endblock %}
