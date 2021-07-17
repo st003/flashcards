@@ -81,8 +81,13 @@ main {
 }
 
 .word {
-    margin-bottom: 3em;
-    font-size: 5em;
+    flex-grow: 1;
+    padding-top: 1em;
+    font-size: 4em;
+}
+
+.btnContainer {
+    padding-bottom: 1.5em;
 }
 
 footer {

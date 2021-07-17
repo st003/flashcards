@@ -33,7 +33,7 @@
             <div class="word">
                 <span>No results were returned</span>
             </div>
-            <div>
+            <div class="btnContainer">
                 <button class="btn tertiaryColor" @click="openFilters()">Open Filters</button>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <span v-if="cardIsFlipped" class="jp">[[ jp ]]</span>
                 <span v-else>[[ en ]]</span>
             </div>
-            <div>
+            <div class="btnContainer">
                 <button v-if="cardIsFlipped" class="btn tertiaryColor" @click="nextCard()">Next Card</button>
                 <button v-else class="btn secondaryColor" @click="flipCard()">Flip Card</button>
             </div>
