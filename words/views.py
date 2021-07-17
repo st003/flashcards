@@ -67,7 +67,7 @@ def get_word(request):
         # TODO - Ideally, maxlen should be auto-set on startup to catch situations
         # when the total word count is small that the CONFIG_HISTORY_MEM
         for i in range(settings.WORD_ID_MEM.maxlen):
-            rand_index = random.randrange(0, word_count -1) if word_count > 1 else 0
+            rand_index = random.randint(0, word_count -1) if word_count > 1 else 0
             selected_word_id = words[rand_index].pk
 
             if selected_word_id not in settings.WORD_ID_MEM:

@@ -14,6 +14,7 @@ var app = new Vue({
         cardIsFlipped: false,
         showFilters: false,
         error: false,
+        filterChange: false
     },
     computed: {
         currentCategory() {
@@ -28,6 +29,10 @@ var app = new Vue({
             return categoryName
         }
     },
+    watch: {
+        category: function() { this.filterChange = true },
+        topic: function() { this.filterChange = true }
+    },
     created: function () {
         fetch('/get_category/')
             .then(res => res.json())
@@ -41,11 +46,12 @@ var app = new Vue({
         getNewWord() {
             // dynamic query string builder. I hate this.
             // fetch is garbage
-            let query = '/get_word/?'
-            if (this.category != 0) query += `&category=${this.category}`
-            if (this.topic != 'All') query += `&topic=${this.topic}`
+            let uri = '/get_word/?'
+            if (this.category != 0) uri += `&category=${this.category}`
+            if (this.topic != 'All') uri += `&topic=${this.topic}`
+            if (this.filterChange) uri += `&purgeMem=true`
 
-            fetch(query)
+            fetch(uri)
                 .then(res => {
                     if (res.status === 404) return Promise.reject(new Error('404'))
                     else return Promise.resolve(res.json())
@@ -55,6 +61,7 @@ var app = new Vue({
                     this.count = data.count
                     this.en = data.en
                     this.jp = data.jp
+                    this.filterChange = false
                 })
                 .catch(() => {
                     this.count = 0
