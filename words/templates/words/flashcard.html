@@ -5,31 +5,72 @@
 {% endblock %}
 
 {% block public %}
-    <main id="app">
-        <!-- <div>
-            <span>Cards: [[ count ]]</span>
-            <button @click="openFilters()">Filters</button>
-        </div> -->
-        <div class="content">
+<div id="app">
+    <header class="primaryColor">
+        <div>
+            <table class="info">
+                <tr>
+                    <td>Category:</td>
+                    <td>[[ currentCategory ]]</td>
+                </tr>
+                <tr>
+                    <td>Topic:</td>
+                    <td>[[ topic ]]</td>
+                </tr>
+                <tr>
+                    <td>Word Count:</td>
+                    <td>[[ count ]]</td>
+                </tr>
+            </table>
+        </div>
+        <h1>Language Learning Flash Cards</h1>
+        <div class="filters">
+            <button class="btn" @click="openFilters()">Filters</button>
+        </div>
+    </header>
+    <main>
+        <div v-if="error" class="content">
+            <div class="word">
+                <span>No results were returned</span>
+            </div>
+            <div>
+                <button class="btn tertiaryColor" @click="openFilters()">Open Filters</button>
+            </div>
+        </div>
+        <div v-else class="content">
             <div class="word">
                 <span v-if="cardIsFlipped" class="jp">[[ jp ]]</span>
                 <span v-else>[[ en ]]</span>
             </div>
             <div>
-                <button
-                    v-if="cardIsFlipped"
-                    class="btn tertiaryColor"
-                    @click="nextCard()"
-                >Next Card</button>
-                <button
-                    v-else class="btn secondaryColor"
-                    @click="flipCard()"
-                >Flip Card</button>
+                <button v-if="cardIsFlipped" class="btn tertiaryColor" @click="nextCard()">Next Card</button>
+                <button v-else class="btn secondaryColor" @click="flipCard()">Flip Card</button>
             </div>
         </div>
-        <!-- <div v-if="showFilters">
-            Filters Pop-up
-            <button @click="closeFilters()">Close</button>
-        </div> -->
     </main>
+    <div v-if="showFilters" class="modalBackdrop"></div>
+    <div v-if="showFilters" class="modalContainer">
+        <div class="modal">
+            <div class="modalHeader">
+                <h2>Filters</h2>
+            </div>
+            <div class="modalBody">
+                <label>Category</label>
+                <select v-model="category">
+                    <option value="0">All</option>
+                    <option v-for="c in categories" :value="[[ c.value ]]">[[ c.name ]]</option>
+                </select>
+                <label>Topic</label>
+                <select v-model="topic">
+                    <option>All</option>
+                    <option v-for="t in topics">[[ t.name ]]</option>
+                </select>
+            </div>
+            <div class="modalFooter">
+                <button class="btn" @click="applyFilters()">Apply</button>
+                <button class="btn" @click="resetFilters()">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
