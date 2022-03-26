@@ -42,7 +42,7 @@ Next, make a copy of config.template and rename it to config.ini. This is your c
 python manage.py runserver
 ```
 
-And following the directions in the terminal. To add a new admin user, stop the development server and run the command:
+and following the directions in the terminal. To add a new admin user, stop the development server and run the command:
 
 ```
 python manage.py createsuperuser
@@ -52,17 +52,21 @@ Follow the terminal prompts. Use this user to access the Django admin at /admin/
 
 ## Running the tests
 
-There are no tests at this time
+While the virtual environment is active, run:
+
+```
+python manage.py test
+```
 
 ## Deployment
 
-This application is not currently intended for use outside of a local development environment. However, since it's built using Dango, it should be fairly easy to deploy the application to a sever. See the Django documentation for more details on deployment.
+This application is not currently intended for use outside of a local development environment. However, since it's built using Dango, it should be fairly easy to deploy the application to a sever. See the Django documentation for more details on deployment at: https://docs.djangoproject.com/en/3.2/howto/deployment/.
 
 ## Built With
 
 * [Python](https://www.python.org/) - Language interpreter
-* [Django](https://www.djangoproject.com/) - Web framework
-* [Vue.js](https://vuejs.org/) - JS SPA Library
+* [Django](https://www.djangoproject.com/) - Python Web-Application framework
+* [Vue.js](https://vuejs.org/) - JavaScript Single Page Application (SPA) framework
 
 ## Authors
 
