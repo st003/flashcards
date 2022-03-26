@@ -36,7 +36,7 @@ Finally, create the database by running:
 python manage.py migrate
 ```
 
-You can now start the development server by running:
+Next, make a copy of config.template and rename it to config.ini. This is your config file. You can now start the development server by running:
 
 ```
 python manage.py runserver

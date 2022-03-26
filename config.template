@@ -1,0 +1,2 @@
+[DEFAULT]
+requestWordHistoryMax = 15
