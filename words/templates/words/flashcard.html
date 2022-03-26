@@ -48,20 +48,20 @@
             </div>
         </div>
     </main>
-    <div v-if="showFilters" class="modalBackdrop"></div>
     <div v-if="showFilters" class="modalContainer">
         <div class="modal">
             <div class="modalHeader">
                 <h2>Filters</h2>
+                <span class="modalClose" @click="closeFilters()">&#10005;</span>
             </div>
             <div class="modalBody">
                 <label>Category</label>
-                <select v-model="category">
+                <select v-model="categorySelection">
                     <option value="0">All</option>
                     <option v-for="c in categories" :value="[[ c.value ]]">[[ c.name ]]</option>
                 </select>
                 <label>Topic</label>
-                <select v-model="topic">
+                <select v-model="topicSelection">
                     <option>All</option>
                     <option v-for="t in topics">[[ t.name ]]</option>
                 </select>

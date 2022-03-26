@@ -7,8 +7,10 @@ var app = new Vue({
         count: 0,
         categories: [],
         category: 0,
+        categorySelection: 0,
         topics: [],
         topic: 'All',
+        topicSelection: 'All',
         en: '',
         jp: '',
         cardIsFlipped: false,
@@ -75,10 +77,12 @@ var app = new Vue({
             this.showFilters = false
         },
         resetFilters() {
-            this.category = 0
-            this.topic = 'All'
+            this.categorySelection = 0
+            this.topicSelection = 'All'
         },
         applyFilters() {
+            this.category = this.categorySelection
+            this.topic = this.topicSelection
             this.cardIsFlipped = false
             this.getNewWord()
             this.closeFilters()

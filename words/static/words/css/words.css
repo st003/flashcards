@@ -1,27 +1,22 @@
+/* COLORS */
 .primaryColor {
     background-color: #222222;
 }
-
 .secondaryColor {
     background-color: #008000;
 }
-
 .secondaryColor:hover {
     background-color: #009900;
 }
-
 .secondaryColor:active {
     background-color: #006600;
 }
-
 .tertiaryColor {
     background-color: #ff8000;
 }
-
 .tertiaryColor:hover {
     background-color: #ff8c1a;
 }
-
 .tertiaryColor:active {
     background-color: #e67300;
 }
@@ -32,6 +27,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-family: 1rem;
 }
 
 #app {
@@ -42,30 +38,37 @@ body {
 
 header {
     display: flex;
+    padding: 1rem;
     align-items: center;
-    padding: 0.5em;
     color: white;
-    font-size: 2em;
+    font-size: 2rem;
 }
-
 header .info td {
-    padding-left: 0.5em;
-    font-size: 0.5em;
+    padding-left: 0.5rem;
+    font-size: 1rem;
 }
-
 header h1 {
+    display: flex;
     flex-grow: 1;
     margin: 0;
-    text-align: center;
-    font-size: 1.25em;
+    padding: 0 1.5rem;
+    justify-content: center;
+    font-size: 1.25rem;
     font-weight: 400;
+    text-align: center;
 }
-
+header .filters {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    align-items: center;
+    justify-content: end;
+}
 header .btn {
-    padding: 0.25em;
+    padding: 0.5rem;
     background-color: lightgray;
     color: black;
-    font-size: 0.75em;
+    font-size: 1.5rem;
 }
 
 main {
@@ -80,27 +83,30 @@ main {
     align-items: center;
 }
 
-.word {
+.word, .btnContainer {
+    display: flex;
     flex-grow: 1;
-    padding-top: 1em;
-    font-size: 4em;
+    align-items: center;
+    justify-content: center;
 }
-
-.btnContainer {
-    padding-bottom: 1.5em;
+.word {
+    margin-top: 2rem;
+    padding: 2rem;
+    min-width: 350px;
+    border: 2px solid lightgray;
+    border-radius: 0.25rem;
+    font-size: 2.5rem;
 }
 
 footer {
-    padding: 0.5em;
+    padding: 0.5rem;
     color: white;
     text-align: center;
 }
-
 footer a {
     color: white;
     text-decoration: none;
 }
-
 footer a:hover {
     color: white;
     text-decoration: underline;
@@ -108,14 +114,13 @@ footer a:hover {
 
 .btn {
     display: inline-block;
-    padding: 1em;
+    padding: 1.25rem;
     border: none;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     color: white;
-    font-size: 2em;
+    font-size: 2rem;
     text-decoration: none;
 }
-
 .btn:hover {
     cursor: pointer;
 }
@@ -124,20 +129,14 @@ footer a:hover {
     color: darkgray;
 }
 
-.modalBackdrop, .modalContainer {
-    position: absolute;
+.modalContainer {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
 }
-
-.modalBackdrop {
-    z-index: 5;
-    background-color: black;
-    opacity: 60%;
-}
-
 .modalContainer {
     z-index: 10;
     display: flex;
@@ -145,53 +144,68 @@ footer a:hover {
     justify-content: center;
     align-items: center;
 }
-
 .modal {
     width: 450px;
     background-color: white;
-    border-radius: 0.25em;
+    border-radius: 0.25rem;
     filter: drop-shadow(0px 0px 10px #222222);
 }
-
 .modalHeader {
-    padding: 1em;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
     border-bottom: 1px solid lightgray;
 }
-
 .modalHeader h2 {
+    flex-grow: 1;
     margin: 0;
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 400;
 }
-
-.modalBody {
-    padding: 1em;
+.modalHeader .modalClose {
+    padding: 0.25rem 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
-
+.modalBody {
+    padding: 1rem;
+}
 .modalBody label, select {
     display: block;
 }
-
 .modalBody label {
-    margin-bottom: 0.75em;
+    margin-bottom: 0.75rem;
 }
-
 .modalBody select {
-    padding: 0.5em;
+    padding: 0.5rem;
     width: 100%;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
 }
-
 .modalFooter {
-    padding: 1em;
+    padding: 1rem;
     border-top: 1px solid lightgray;
     text-align: right;
 }
-
 .modalFooter .btn {
-    margin-left: 0.25em;
-    padding: 0.5em;
+    margin-left: 0.25rem;
+    padding: 0.5rem;
     background-color: lightgray;
     color: black;
-    font-size: 1em;
+    font-size: 1rem;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+    header .filters {
+        flex-grow: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .word {
+        font-size: 3.5rem;
+    }
 }
