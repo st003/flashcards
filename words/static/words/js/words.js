@@ -15,6 +15,7 @@ var app = new Vue({
         jp: '',
         cardIsFlipped: false,
         showFilters: false,
+        fadeOut: false,
         error: false,
         filterChange: false
     },
@@ -71,28 +72,30 @@ var app = new Vue({
                 })
         },
         openFilters() {
-            this.showFilters = true
+            this.fadeOut = false;
+            this.showFilters = true;
         },
         closeFilters() {
-            this.showFilters = false
+            this.fadeOut = true;
+            setTimeout(() => { this.showFilters = false; }, 350);
         },
         resetFilters() {
-            this.categorySelection = 0
-            this.topicSelection = 'All'
+            this.categorySelection = 0;
+            this.topicSelection = 'All';
         },
         applyFilters() {
-            this.category = this.categorySelection
-            this.topic = this.topicSelection
-            this.cardIsFlipped = false
-            this.getNewWord()
-            this.closeFilters()
+            this.category = this.categorySelection;
+            this.topic = this.topicSelection;
+            this.cardIsFlipped = false;
+            this.getNewWord();
+            this.closeFilters();
         },
         flipCard() {
-            this.cardIsFlipped = true
+            this.cardIsFlipped = true;
         },
         nextCard() {
             this.getNewWord()
-            this.cardIsFlipped = false
+            this.cardIsFlipped = false;
         }
     }
 })

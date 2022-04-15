@@ -130,19 +130,17 @@ footer a:hover {
 }
 
 .modalContainer {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-.modalContainer {
     z-index: 10;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 .modal {
     width: 450px;
@@ -207,5 +205,32 @@ footer a:hover {
     }
     .word {
         font-size: 3.5rem;
+    }
+}
+
+/* ANIMATIONS */
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 0.35s forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeOut {
+    opacity: 1;
+    animation: fadeOut 0.35s forwards;
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
