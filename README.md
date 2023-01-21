@@ -8,7 +8,7 @@ Prior knowledge of Python virtual environments, Django's admin and manage.py are
 
 ### Prerequisites
 
-Python3.6 or higher.
+Python3.8+
 
 ### Installing
 
