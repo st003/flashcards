@@ -66,6 +66,7 @@ This application is not currently intended for use outside of a local developmen
 
 * [Python](https://www.python.org/) - Language interpreter
 * [Django](https://www.djangoproject.com/) - Python Web-Application framework
+* [Django REST Framework](https://www.django-rest-framework.org/) - REST API framework for Django
 * [Vue.js](https://vuejs.org/) - JavaScript Single Page Application (SPA) framework
 
 ## Authors

@@ -30,13 +30,6 @@ def get_category(request):
 
 
 @require_http_methods(['GET'])
-def get_topic(request):
-    """Returns all topics in JSON."""
-    topics = [{'id': t.pk, 'name': t.name } for t in Topic.objects.all()]
-    return JsonResponse({'topics': topics})
-
-
-@require_http_methods(['GET'])
 def get_word(request):
     """Returns a random word in JSON."""
 

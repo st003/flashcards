@@ -40,9 +40,11 @@ var app = new Vue({
         fetch('/get_category/')
             .then(res => res.json())
             .then(data => { this.categories = data.categories })
-        fetch('/get_topic/')
+
+        fetch('/api/v1/topic/')
             .then(res => res.json())
-            .then(data => { this.topics = data.topics })
+            .then(data => { this.topics = data })
+
         this.getNewWord() 
     },
     methods: {
