@@ -3,6 +3,11 @@ from rest_framework import serializers
 from words.models import Topic, Word
 
 
+class CategorySerializer(serializers.Serializer):
+    name = serializers.CharField()
+    value = serializers.IntegerField()
+
+
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic

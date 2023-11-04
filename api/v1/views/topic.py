@@ -8,4 +8,3 @@ class TopicsV1ApiView(generics.ListAPIView):
     """Read-only endpoint for querying all Topics."""
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
-

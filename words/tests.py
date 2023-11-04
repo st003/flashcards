@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from .models import Word
 
+
 class IndexViewTests(TestCase):
 
     def test_status_code(self):
@@ -23,7 +24,7 @@ class CategoryApiTests(TestCase):
 
     def test_status_code(self):
         """Checks if the get_word API returns OK."""
-        response = self.client.get(reverse('get_category'))
+        response = self.client.get(reverse('category'))
         self.assertEqual(response.status_code, 200)
 
 
@@ -31,7 +32,7 @@ class ToipcApiTests(TestCase):
 
     def test_status_code(self):
         """Checks if the get_topic API returns OK."""
-        response = self.client.get(reverse('get_topic'))
+        response = self.client.get(reverse('topic'))
         self.assertEqual(response.status_code, 200)
 
 

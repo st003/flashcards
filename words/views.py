@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
-from .models import Topic, Word
+from .models import Word
 
 
 # VIEWS
@@ -20,13 +20,6 @@ def index(request):
 def flashcard(request):
     """Renders the flash card page."""
     return render(request, 'words/flashcard.html')
-
-
-@require_http_methods(['GET'])
-def get_category(request):
-    """Returns all Word categories in JSON."""
-    categories = [{'name': name, 'value': value} for value, name in Word.CATEGORIES]
-    return JsonResponse({'categories': categories})
 
 
 @require_http_methods(['GET'])

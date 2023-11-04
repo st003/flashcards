@@ -37,9 +37,9 @@ var app = new Vue({
         topic: function() { this.filterChange = true }
     },
     created: function () {
-        fetch('/get_category/')
+        fetch('/api/v1/category/')
             .then(res => res.json())
-            .then(data => { this.categories = data.categories })
+            .then(data => { this.categories = data })
 
         fetch('/api/v1/topic/')
             .then(res => res.json())
