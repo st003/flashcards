@@ -6,7 +6,7 @@ from .views.word import WordV1ApiView
 
 
 urlpatterns = [
-    path('category/', CategoriesV1ApiView.as_view()),
-    path('topic/', TopicsV1ApiView.as_view()),
+    path('category/', CategoriesV1ApiView.as_view(), name='category'),
+    path('topic/', TopicsV1ApiView.as_view(), name='topic'),
     path('word/<int:pk>/', WordV1ApiView.as_view())
 ]
