@@ -4,6 +4,7 @@ from words.models import Topic, Word
 
 
 class CategorySerializer(serializers.Serializer):
+    # TODO - check options for these serializer functions
     name = serializers.CharField()
     value = serializers.IntegerField()
 
