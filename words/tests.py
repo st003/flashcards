@@ -44,5 +44,5 @@ class WordApiTests(TestCase):
 
     def test_status_code(self):
         """Checks if the get_word API returns OK."""
-        response = self.client.get(reverse('get_word'))
+        response = self.client.get(reverse('word_rand'))
         self.assertEqual(response.status_code, 200)

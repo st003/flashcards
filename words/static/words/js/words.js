@@ -32,10 +32,6 @@ var app = new Vue({
             return categoryName
         }
     },
-    watch: {
-        category: function() { this.filterChange = true },
-        topic: function() { this.filterChange = true }
-    },
     created: function () {
         fetch('/api/v1/category/')
             .then(res => res.json())
@@ -45,13 +41,12 @@ var app = new Vue({
             .then(res => res.json())
             .then(data => { this.topics = data })
 
-        this.getNewWord() 
+        this.getNewWord()
     },
     methods: {
         getNewWord() {
-            // dynamic query string builder. I hate this.
-            // fetch is garbage
-            let uri = '/get_word/?'
+            // TODO - change this to URLSearchParams()
+            let uri = '/api/v1/word/rand/?'
             if (this.category != 0) uri += `&category=${this.category}`
             if (this.topic != 'All') uri += `&topic=${this.topic}`
             if (this.filterChange) uri += `&purgeMem=true`
@@ -74,23 +69,24 @@ var app = new Vue({
                 })
         },
         openFilters() {
-            this.fadeOut = false;
-            this.showFilters = true;
+            this.fadeOut = false
+            this.showFilters = true
         },
         closeFilters() {
             this.fadeOut = true;
-            setTimeout(() => { this.showFilters = false; }, 350);
+            setTimeout(() => { this.showFilters = false; }, 350)
         },
         resetFilters() {
-            this.categorySelection = 0;
-            this.topicSelection = 'All';
+            this.categorySelection = 0
+            this.topicSelection = 'All'
         },
         applyFilters() {
-            this.category = this.categorySelection;
-            this.topic = this.topicSelection;
-            this.cardIsFlipped = false;
-            this.getNewWord();
-            this.closeFilters();
+            this.category = this.categorySelection
+            this.topic = this.topicSelection
+            this.filterChange = true
+            this.cardIsFlipped = false
+            this.getNewWord()
+            this.closeFilters()
         },
         flipCard() {
             this.cardIsFlipped = true;

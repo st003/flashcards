@@ -5,6 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('flashcard/', views.flashcard, name='flashcard'),
-    path('get_word/', views.get_word, name='get_word')
+    path('flashcard/', views.flashcard, name='flashcard')
 ]
