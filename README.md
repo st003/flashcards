@@ -60,7 +60,7 @@ python manage.py test
 
 ## Deployment
 
-This application is not currently intended for use outside of a local development environment. However, since it's built using Dango, it should be fairly easy to deploy the application to a sever. See the Django documentation for more details on deployment at: https://docs.djangoproject.com/en/4.1/howto/deployment/.
+This application is not currently intended for use outside of a local development environment. However, since it's built using Dango, it should be fairly easy to deploy the application to a sever. See the Django documentation for more details on deployment at: https://docs.djangoproject.com/en/4.2/howto/deployment/.
 
 ## Built With
 
