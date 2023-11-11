@@ -1,23 +1,26 @@
-var app = new Vue({
+const { createApp } = Vue
+
+createApp({
     // required change b/c django uses {{ }}
     // for its template rendering
     delimiters: ['[[', ']]'],
-    el: '#app',
-    data: {
-        count: 0,
-        categories: [],
-        category: 0,
-        categorySelection: 0,
-        topics: [],
-        topic: 'All',
-        topicSelection: 'All',
-        en: '',
-        jp: '',
-        cardIsFlipped: false,
-        showFilters: false,
-        fadeOut: false,
-        error: false,
-        filterChange: false
+    data() {
+        return {
+            count: 0,
+            categories: [],
+            category: 0,
+            categorySelection: 0,
+            topics: [],
+            topic: 'All',
+            topicSelection: 'All',
+            en: '',
+            jp: '',
+            cardIsFlipped: false,
+            showFilters: false,
+            fadeOut: false,
+            error: false,
+            filterChange: false
+        }
     },
     computed: {
         currentCategory() {
@@ -96,4 +99,4 @@ var app = new Vue({
             this.cardIsFlipped = false;
         }
     }
-})
+}).mount('#app')

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{% static 'words/css/words.css' %}">
 
         <!-- vue.js-->
-        <script src="{% static 'words/js/vue.min.js' %}"></script>
+        <script src="{% static 'words/js/vue-3.3.8/vue.global.prod.min.js' %}"></script>
 
         <title>{% block title %}{% endblock %}</title>
     </head>
@@ -22,7 +22,6 @@
         </footer>
 
         <!-- custom JS -->
-        <script src="{% static 'words/js/words.js' %}"></script>
-
+        <script type="module" src="{% static 'words/js/words.js' %}"></script>
     </body>
 </html>
