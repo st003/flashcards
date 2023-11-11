@@ -48,13 +48,12 @@ createApp({
     },
     methods: {
         getNewWord() {
-            // TODO - change this to URLSearchParams()
-            let uri = '/api/v1/word/rand/?'
-            if (this.category != 0) uri += `&category=${this.category}`
-            if (this.topic != 'All') uri += `&topic=${this.topic}`
-            if (this.filterChange) uri += `&purgeMem=true`
+            const args = new URLSearchParams()
+            if (this.category != 0) args.append('category', this.category)
+            if (this.topic != 'All') args.append('topic', this.topic)
+            if (this.filterChange) args.append('purgeMem', 'true')
 
-            fetch(uri)
+            fetch('/api/v1/word/rand/?' + args)
                 .then(res => {
                     if (res.status === 404) return Promise.reject(new Error('404'))
                     else return Promise.resolve(res.json())
