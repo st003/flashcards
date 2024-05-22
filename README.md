@@ -1,10 +1,10 @@
 # Flashcards
 
-A web-based application for studying foreign vocabulary and phrases with user made flash cards. Built with Django and Vue.js. New words/phrases can be added via the Django admin. Flashcards can be filtered by topic and syntax.
+A web-based application for studying foreign vocabulary and phrases with user made flash cards. Built with Django, Django REST Framework, and Vue.js. New words/phrases can be added via the Django admin. Flashcards can be filtered by topic and syntax.
 
 ## Getting Started
 
-Prior knowledge of Python virtual environments, Django's admin and manage.py are recommended. These instructions assume a unix-like environment (Linux, MacOS).
+Prior knowledge of Python virtual environments, Django's admin, and manage.py are required. These instructions assume a unix-like environment (Linux, MacOS).
 
 ### Prerequisites
 
