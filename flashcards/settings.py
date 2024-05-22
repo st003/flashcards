@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import configparser
-from collections import deque
+import os
 
+from collections import deque
 from pathlib import Path
 
 from django.core.management.utils import get_random_secret_key
@@ -128,8 +129,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
+# the location static files will be placed when running 'manage.py collectstatic'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+
+# Custom configurations
 # in memory list of recently request words
 DEFAULT_HISTORY_MEM = 15
 CONFIG_HISTORY_MEM = abs(config['DEFAULT'].get('requestedWordHistoryMax', DEFAULT_HISTORY_MEM))
