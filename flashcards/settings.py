@@ -132,7 +132,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # the location static files will be placed when running 'manage.py collectstatic'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# avoid using the directory name 'static' as it can conflict with .gitignore and
+# app-specific static directories
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 
 # Custom configurations
