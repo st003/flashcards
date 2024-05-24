@@ -60,7 +60,7 @@ python manage.py test
 
 ## Deployment
 
-The DEPLOYMENT for deployment instructions using Nginx + Gunicorn. For alternative approaches, see refer to the Django docs at: [https://docs.djangoproject.com/en/4.2/howto/deployment/](https://docs.djangoproject.com/en/4.2/howto/deployment/).
+See DEPLOYMENT for deployment instructions using Linux/Nginx/Gunicorn. For alternative approaches, refer to the Django docs at: [https://docs.djangoproject.com/en/4.2/howto/deployment/](https://docs.djangoproject.com/en/4.2/howto/deployment/).
 
 
 ## Built With
