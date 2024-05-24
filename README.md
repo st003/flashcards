@@ -60,71 +60,8 @@ python manage.py test
 
 ## Deployment
 
-The following section details deployment of this app using Nginx + Gunicorn. For alternative approaches, see: [https://docs.djangoproject.com/en/4.2/howto/deployment/](https://docs.djangoproject.com/en/4.2/howto/deployment/).
+The DEPLOYMENT for deployment instructions using Nginx + Gunicorn. For alternative approaches, see refer to the Django docs at: [https://docs.djangoproject.com/en/4.2/howto/deployment/](https://docs.djangoproject.com/en/4.2/howto/deployment/).
 
-### Static Files
-
-After installing the source files, start the virtual environment, and run the command:
-
-```
-python manage.py collectstatic
-```
-
-This will copy all static files from all apps into a directory called "static/" in the application root directory.
-
-### Nginx Configuration
-
-Create a nginx conf file with the following values:
-
-```
-server {
-    server_name <url>;
-
-    location /static/ {
-        root /path/to/application/;
-        autoindex off;
-    }
-
-    location / {
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_pass http://unix:/path/to/application/<socket-file-name>.sock;
-    }
-}
-```
-
-Reload your Nginx settings:
-
-```
-sudo systemctl reload nginx
-```
-
-### Systemd Service
-
-Create a Systemd service file with the following values:
-
-```
-[Unit]
-Description=Gunicorn daemon for <application-name> app
-After=network.target
-
-[Service]
-User=<user>
-Group=nginx
-WorkingDirectory=/path/to/application
-ExecStart=/path/to/application/venv/bin/gunicorn -w 1 -t 120 -b unix:/path/to/application/<socket-file-name>.sock -m 007 flashcards.wsgi
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Start and enable your service
-
-```
-sudo systemctl start <service-file-name>.service
-sudo systemctl enable <service-file-name>.service
-```
 
 ## Built With
 
