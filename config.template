@@ -1,6 +1,0 @@
-[DEFAULT]
-debug = True
-requestWordHistoryMax = 15
-
-[SECRET]
-secretKey =

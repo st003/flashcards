@@ -82,7 +82,13 @@ Now create the database by running:
 python manage.py migrate
 ```
 
-To add a Django superuser, run the command:
+Next, generate a configuration file by running the command:
+
+```
+python manage.py makeconfig
+```
+
+Follow the prompts. To add a Django admin superuser, run the command:
 
 ```
 python manage.py createsuperuser
@@ -105,13 +111,6 @@ Exit the virtual environment with the command:
 ```
 deactivate
 ```
-
-### Config.ini
-
-Make a copy of the 'config.template' and name it 'config.ini'. Edit 'config.ini' so that debug is set to False and add a secret key.
-
-TODO - add instructions for creating a secret key
-TODO - add instructions about KNOWN_HOSTS
 
 *Note: at this point you may exit the production user. Always verify the user and group for the application files are production:production*
 
@@ -175,7 +174,7 @@ sudo systemctl reload nginx
 
 ### Installing a TLS Certificate
 
-Finally, install a TLS certificate by runing the command:
+Finally, install a TLS certificate by running the command:
 
 ```
 sudo certbot --nginx

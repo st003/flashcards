@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import configparser
 import os
 
 from collections import deque
 from pathlib import Path
+
+import yaml
 
 from django.core.management.utils import get_random_secret_key
 
@@ -22,18 +23,19 @@ from django.core.management.utils import get_random_secret_key
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-config = configparser.ConfigParser()
-config.read(f'{BASE_DIR}/config.ini')
+# open config.yml
+with open(f'{BASE_DIR}/config.yml', 'r', newline='') as config_yaml:
+    config: dict = yaml.safe_load(config_yaml)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/#secret-key for more info
-SECRET_KEY = config['SECRET'].get('secretKey', get_random_secret_key())
+SECRET_KEY: str = config.get('secretKey', get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config['DEFAULT'].get('debug', True)
+DEBUG: bool = config.get('debug', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: list[str] = config.get('allowedHosts', [])
 
 
 # Application definition
@@ -86,7 +88,7 @@ WSGI_APPLICATION = 'flashcards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', # TODO - import the database name from config.yml
     }
 }
 
@@ -140,5 +142,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 # Custom configurations
 # in memory list of recently request words
 DEFAULT_HISTORY_MEM = 15
-CONFIG_HISTORY_MEM = abs(config['DEFAULT'].get('requestedWordHistoryMax', DEFAULT_HISTORY_MEM))
+CONFIG_HISTORY_MEM = abs(config.get('requestedWordHistoryMax', DEFAULT_HISTORY_MEM))
 WORD_ID_MEM = deque(maxlen=CONFIG_HISTORY_MEM)

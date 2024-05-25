@@ -4,7 +4,7 @@ A web-based application for studying foreign vocabulary and phrases with user ma
 
 ## Getting Started
 
-Prior knowledge of Python virtual environments, Django's admin, and manage.py are required. These instructions assume a unix-like environment (Linux, MacOS).
+Prior knowledge of Django is required. These instructions assume a unix-like environment (Linux, MacOS).
 
 ### Prerequisites
 
@@ -24,35 +24,41 @@ Once complete, activate the virtual environment by running:
 . venv/bin/activate
 ```
 
-To install project dependencies run:
+With the virtual environment active, install project dependencies by running the command:
 
 ```
 pip install -r requirements.txt
 ```
 
-Finally, create the database by running:
+Next, create the database by running:
 
 ```
 python manage.py migrate
 ```
 
-Next, make a copy of config.template and rename it to config.ini. This is your config file. You can now start the development server by running:
+Next, generate a configuration file by running the command:
 
 ```
-python manage.py runserver
+python manage.py makeconfig
 ```
 
-and following the directions in the terminal. To add a new admin user, stop the development server and run the command:
+Follow the prompts. To add a new admin user, run the command:
 
 ```
 python manage.py createsuperuser
 ```
 
-Follow the terminal prompts. Use this user to access the Django admin at /admin/login. You can add words and topics via the admin interface.
+Follow the prompts. You can now start the development server by running:
+
+```
+python manage.py runserver
+```
+
+Use the admin user to access the Django admin at /admin/login. You can add words and topics via the admin interface.
 
 ## Running the tests
 
-While the virtual environment is active, run:
+While the virtual environment is active, run the command:
 
 ```
 python manage.py test
