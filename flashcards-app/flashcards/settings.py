@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import logging
 
 from collections import deque
 from pathlib import Path
@@ -19,13 +20,19 @@ import yaml
 
 from django.core.management.utils import get_random_secret_key
 
+# TODO - investigate Django's logging config settings
+log: logging.Logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # open config.yml
-with open(f'{BASE_DIR}/config.yml', 'r', newline='') as config_yaml:
-    config: dict = yaml.safe_load(config_yaml)
+config: dict = {}
+try:
+    with open(f'{BASE_DIR}/config.yml', 'r', newline='') as config_yaml:
+        config = yaml.safe_load(config_yaml)
+except FileNotFoundError:
+    log.warn('\'config.yaml\' not found')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -85,12 +92,7 @@ WSGI_APPLICATION = 'flashcards.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3', # TODO - import the database name from config.yml
-    }
-}
+DATABASES: dict = config.get('databases', {})
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 

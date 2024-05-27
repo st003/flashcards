@@ -42,6 +42,12 @@ class Command(BaseCommand):
             self.config_allowed_hosts.append(allowed_host)
 
         config: dict = {
+            'databases': {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': f'{BASE_DIR}/db.sqlite3',
+                }
+            },
             'debug': self.config_debug,
             'allowedHosts': self.config_allowed_hosts,
             'requestWordHistoryMax': 15,
