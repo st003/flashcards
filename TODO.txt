@@ -1,0 +1,8 @@
+Add postgres SQL support
+
+Replace use of "jp" and "en" with generic terms
+Add image support
+Add support for different "decks"
+Make categories into it's own db table?
+
+increase test coverage

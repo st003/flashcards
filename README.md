@@ -1,10 +1,10 @@
 # Flashcards
 
-A web-based application for studying foreign vocabulary and phrases with user made flash cards. Built with Django, Django REST Framework, and Vue.js. New words/phrases can be added via the Django admin. Flashcards can be filtered by topic and syntax.
+A web-based application for studying foreign vocabulary and phrases with user made flash cards. Built with Django, Django REST Framework, and Vue.js. New words/phrases can be added via the Django admin. Flash cards can be filtered by topic and syntax.
 
 ## Getting Started
 
-Prior knowledge of Django is required. These instructions assume a unix-like environment (Linux, MacOS).
+Prior knowledge of Django, Django REST Framework, and Vue.js is required. These instructions assume a unix-like environment (Linux, MacOS).
 
 ### Prerequisites
 
@@ -12,7 +12,7 @@ Python3.8+
 
 ### Installing
 
-Copy the project to your local machine. From the project root directory, open a terminal and create a virtual environment by running:
+Copy the project to your local machine. From the flashcards-app directory, open a terminal and create a virtual environment by running:
 
 ```
 python -m venv venv
@@ -54,7 +54,7 @@ Follow the prompts. You can now start the development server by running:
 python manage.py runserver
 ```
 
-Use the admin user to access the Django admin at /admin/login. You can add words and topics via the admin interface.
+Use the admin user to access the Django admin in the browser at http://127.0.0.1:8000/admin/login. You can add words and topics via the admin interface.
 
 ## Running the tests
 
@@ -78,4 +78,4 @@ See DEPLOYMENT for deployment instructions using Linux/Nginx/Gunicorn. For alter
 
 ## Authors
 
-* **st003** - *Initial work*
+* **st003** - *Maintainer*
