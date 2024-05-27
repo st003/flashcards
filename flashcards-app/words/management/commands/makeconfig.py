@@ -1,3 +1,4 @@
+import getpass
 import os.path
 
 import yaml
@@ -24,6 +25,7 @@ class Command(BaseCommand):
                 else:
                     self.stdout.write('Input not recognized')
 
+        # debug mode
         while True:
             debug_setting: str = input('Configure for debug mode (T/F): ')
             if debug_setting.upper() == 'T':
@@ -35,6 +37,46 @@ class Command(BaseCommand):
             else:
                 self.stdout.write('Input not recognized')
 
+        # databases
+        self.config_databases: dict = {
+            'default': {}
+        }
+
+        self.stdout.write('Available database engines:')
+        self.stdout.write('1. SQLite3')
+        self.stdout.write('2. PostgreSQL')
+        while True:
+            database_type: str = input('Which database engine will you use? Enter number: ')
+
+            if database_type == '1':
+                self.config_databases['default'] = {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': f'{BASE_DIR}/db.sqlite3',
+                }
+                break
+
+            elif database_type == '2':
+                db_host: str = input('Enter database name (leave blank for localhost): ')
+                db_name: str = input('Enter database name: ')
+                db_user: str = input('Enter database user: ')
+                db_password: str = getpass.getpass('Enter database password: ')
+
+                self.config_databases['default'] = {
+                    'ENGINE': 'django.db.backends.postgresql',
+                    'OPTIONS': {
+                        'HOST': db_host,
+                        'PORT': 5432, # PostgreSQL default
+                        'NAME': db_name,
+                        'USER': db_user,
+                        'PASSWORD': db_password,
+                    }
+                }
+                break
+
+            else:
+                self.stdout.write('Input not recognized')
+
+        # allowed hosts
         self.config_allowed_hosts: list[str] = []
         if not self.config_debug:
             # TODO - add support for entering multiple values
@@ -42,12 +84,7 @@ class Command(BaseCommand):
             self.config_allowed_hosts.append(allowed_host)
 
         config: dict = {
-            'databases': {
-                'default': {
-                    'ENGINE': 'django.db.backends.sqlite3',
-                    'NAME': f'{BASE_DIR}/db.sqlite3',
-                }
-            },
+            'databases': self.config_databases,
             'debug': self.config_debug,
             'allowedHosts': self.config_allowed_hosts,
             'requestWordHistoryMax': 15,
