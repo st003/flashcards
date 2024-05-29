@@ -56,20 +56,18 @@ class Command(BaseCommand):
                 break
 
             elif database_type == '2':
-                db_host: str = input('Enter database name (leave blank for localhost): ')
+                db_host: str = input('Enter database host (leave blank for localhost): ')
                 db_name: str = input('Enter database name: ')
                 db_user: str = input('Enter database user: ')
                 db_password: str = getpass.getpass('Enter database password: ')
 
                 self.config_databases['default'] = {
                     'ENGINE': 'django.db.backends.postgresql',
-                    'OPTIONS': {
-                        'HOST': db_host,
-                        'PORT': 5432, # PostgreSQL default
-                        'NAME': db_name,
-                        'USER': db_user,
-                        'PASSWORD': db_password,
-                    }
+                    'HOST': db_host,
+                    'PORT': 5432, # PostgreSQL default
+                    'NAME': db_name,
+                    'USER': db_user,
+                    'PASSWORD': db_password,
                 }
                 break
 
