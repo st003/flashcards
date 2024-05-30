@@ -76,19 +76,25 @@ Install the required Python dependencies with the command:
 pip install -r requirements.txt
 ```
 
-Now create the database by running:
-
-```
-python manage.py migrate
-```
-
 Next, generate a configuration file by running the command:
 
 ```
 python manage.py makeconfig
 ```
 
-Follow the prompts. To add a Django admin superuser, run the command:
+Follow the prompts. Now create the database by running:
+
+```
+python manage.py migrate
+```
+
+*Note for PostgreSQL: the version of psycopg included in requirements.txt may not be adequate for connecting to a PostgreSQL server. If you receive an exception with an error message similar to: 'No module named psycopg', try installing the binary version of psycopg with the command:*
+
+```
+pip install psycopg[binary]
+```
+
+To add a Django admin superuser, run the command:
 
 ```
 python manage.py createsuperuser
