@@ -1,24 +1,38 @@
 /* COLORS */
+:root {
+    --primary-color: #333333;
+    --secondary-color: #8A9A5B;
+    --secondary-color-hover: #97a668;
+    --secondary-color-active: #7c8a51;
+    --tertiary-color: #ff8000;
+    --tertiary-color-hover: #ff8c1a;
+    --tertiary-color-active: #e67300;
+    --neutral-color: #eeeeee;
+    --light-text: #ffffff;
+    --dark-text: #333333;
+    --answer-text:#A9A9A9;
+}
+
 .primaryColor {
-    background-color: #222222;
+    background-color: var(--primary-color);
 }
 .secondaryColor {
-    background-color: #008000;
+    background-color: var(--secondary-color);
 }
 .secondaryColor:hover {
-    background-color: #009900;
+    background-color: var(--secondary-color-hover);
 }
 .secondaryColor:active {
-    background-color: #006600;
+    background-color: var(--secondary-color-active)
 }
 .tertiaryColor {
-    background-color: #ff8000;
+    background-color: var(--tertiary-color);
 }
 .tertiaryColor:hover {
-    background-color: #ff8c1a;
+    background-color: var(--tertiary-color-hover);
 }
 .tertiaryColor:active {
-    background-color: #e67300;
+    background-color: var(--secondary-color-active);
 }
 
 body {
@@ -40,7 +54,7 @@ header {
     display: flex;
     padding: 1rem;
     align-items: center;
-    color: white;
+    color: var(--light-text);
     font-size: 2rem;
 }
 header .info td {
@@ -66,8 +80,8 @@ header .filters {
 }
 header .btn {
     padding: 0.5rem;
-    background-color: lightgray;
-    color: black;
+    background-color: var(--neutral-color);
+    color: var(--dark-text);
     font-size: 1.5rem;
 }
 
@@ -93,22 +107,22 @@ main {
     margin-top: 2rem;
     padding: 2rem;
     min-width: 350px;
-    border: 2px solid lightgray;
+    border: 2px solid var(--neutral-color);
     border-radius: 0.25rem;
     font-size: 2.5rem;
 }
 
 footer {
     padding: 0.5rem;
-    color: white;
+    color: var(--light-text);
     text-align: center;
 }
 footer a {
-    color: white;
+    color: var(--light-text);
     text-decoration: none;
 }
 footer a:hover {
-    color: white;
+    color: var(--light-text);
     text-decoration: underline;
 }
 
@@ -117,7 +131,7 @@ footer a:hover {
     padding: 1.25rem;
     border: none;
     border-radius: 0.25rem;
-    color: white;
+    color: var(--light-text);
     font-size: 2rem;
     text-decoration: none;
 }
@@ -126,7 +140,7 @@ footer a:hover {
 }
 
 .jp {
-    color: darkgray;
+    color: var(--answer-text);
 }
 
 .modalContainer {
@@ -140,19 +154,19 @@ footer a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(51, 51, 51, 0.7);
 }
 .modal {
     width: 450px;
-    background-color: white;
+    background-color: var(--light-text);
     border-radius: 0.25rem;
-    filter: drop-shadow(0px 0px 10px #222222);
+    filter: drop-shadow(0px 0px 10px var(--primary-color));
 }
 .modalHeader {
     display: flex;
     padding: 1rem;
     align-items: center;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid var(--neutral-color);
 }
 .modalHeader h2 {
     flex-grow: 1;
@@ -181,14 +195,14 @@ footer a:hover {
 }
 .modalFooter {
     padding: 1rem;
-    border-top: 1px solid lightgray;
+    border-top: 1px solid var(--neutral-color);
     text-align: right;
 }
 .modalFooter .btn {
     margin-left: 0.25rem;
     padding: 0.5rem;
-    background-color: lightgray;
-    color: black;
+    background-color: var(--neutral-color);
+    color: var(--dark-text);
     font-size: 1rem;
 }
 
@@ -211,7 +225,7 @@ footer a:hover {
 /* ANIMATIONS */
 .fadeIn {
     opacity: 0;
-    animation: fadeIn 0.35s forwards;
+    animation: fadeIn 0.25s forwards;
 }
 @keyframes fadeIn {
     from {
@@ -224,7 +238,7 @@ footer a:hover {
 
 .fadeOut {
     opacity: 1;
-    animation: fadeOut 0.35s forwards;
+    animation: fadeOut 0.25s forwards;
 }
 @keyframes fadeOut {
     from {
