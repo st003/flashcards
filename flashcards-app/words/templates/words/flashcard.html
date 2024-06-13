@@ -25,7 +25,7 @@
                 </tr>
             </table>
         </div>
-        <h1>Flash Cards</h1>
+        <h1>Flashcards</h1>
         <div class="filters">
             <button class="filters_btn" @click="openFilters()">
                 <!-- icon courtesy of Bootstrap Icons. https://icons.getbootstrap.com/icons/sliders/ -->
@@ -45,7 +45,7 @@
         </div>
         <div class="flip_btn_container">
             <div v-if="error">
-                <button class="btn tertiary_color" @click="openFilters()">Open Filters</button>
+                <button class="btn" @click="openFilters()">Open Filters</button>
             </div>
             <div v-else>
                 <button v-if="cardIsFlipped" class="btn tertiary_color" @click="nextCard()">Next Card</button>
