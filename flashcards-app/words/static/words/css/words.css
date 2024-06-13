@@ -8,6 +8,7 @@
     --tertiary-color-hover: #ff8c1a;
     --tertiary-color-active: #e67300;
     --neutral-color: #eeeeee;
+    --neutral-color-hover: #e0e0e0;
     --light-text: #ffffff;
     --dark-text: #333333;
     --answer-text:#A9A9A9;
@@ -65,7 +66,7 @@ header {
 header h1 {
     font-size: 1.25rem;
     font-weight: 400;
-    text-align: left;
+    text-align: center;
 }
 
 #app {
@@ -78,24 +79,25 @@ header h1 {
     display: flex;
     flex-direction: row;
 }
-.flashcard_header .filter_selections {
+.flashcard_header .filter_results .filter_settings {
     display: none;
 }
-.flashcard_header .filter_selections td {
-    padding-left: 0.5rem;
-    font-size: 1rem;
+.flashcard_header .filter_results td {
+    padding-right: 0.25rem;
+    font-size: 0.95rem;
 }
 .flashcard_header h1 {
     flex-grow: 1;
 }
 .flashcard_header .filters {
-    display: none;
+    margin-right: 0.25rem;
 }
-.flashcard_header .filters .btn {
-    padding: 0.75rem;
-    background-color: var(--neutral-color);
-    color: var(--dark-text);
-    font-size: 1.25rem;
+.flashcard_header .filters .filters_btn {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border: none;
+    color: var(--light-text);
+    cursor: pointer;
 }
 
 main {
@@ -111,7 +113,7 @@ main {
     width: 75%;
     height: 50%;
     margin-bottom: 2rem;
-    padding: 2rem;
+    padding: 1.5rem;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--neutral-color);
@@ -128,7 +130,7 @@ main {
     width: 100%;
 }
 .flip_btn_container > div {
-    padding: 0 0.75rem;
+    padding: 0 1.25rem;
     width: inherit;
 }
 .flip_btn_container button {
@@ -151,7 +153,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
-.modalContainer {
+.modal_container {
     display: flex;
     position: fixed;
     top: 0;
@@ -165,53 +167,59 @@ footer a:hover {
     background-color: rgba(51, 51, 51, 0.7);
 }
 .modal {
-    width: 450px;
+    width: 90%;
+    z-index: 15;
     background-color: var(--light-text);
     border-radius: 0.25rem;
     filter: drop-shadow(0px 0px 10px var(--primary-color));
 }
-.modalHeader {
+.modal_header {
     display: flex;
     padding: 1rem;
     align-items: center;
     border-bottom: 1px solid var(--neutral-color);
 }
-.modalHeader h2 {
+.modal_header h2 {
     flex-grow: 1;
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
 }
-.modalHeader .modalClose {
+.modal_header .modal_close {
     padding: 0.25rem 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
 }
-.modalBody {
+.modal_body {
     padding: 1rem;
 }
-.modalBody label, select {
+.modal_body label, select {
     display: block;
 }
-.modalBody label {
+.modal_body label {
     margin-bottom: 0.75rem;
 }
-.modalBody select {
+.modal_body select {
     padding: 0.5rem;
     width: 100%;
     margin-bottom: 1.5rem;
 }
-.modalFooter {
-    padding: 1rem;
+.modal_footer {
+    padding: 0.75rem 1rem;
     border-top: 1px solid var(--neutral-color);
-    text-align: right;
+    text-align: center;
 }
-.modalFooter .btn {
-    margin-left: 0.25rem;
+.modal_footer .btn {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.75rem 0;
     padding: 0.5rem;
     background-color: var(--neutral-color);
     color: var(--dark-text);
     font-size: 1rem;
+}
+.modal_footer .btn:hover {
+    background-color: var(--neutral-color-hover);
 }
 
 /*
@@ -222,12 +230,25 @@ footer a:hover {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+    .flashcard_header .filter_results td {
+        padding-right: 0.75rem;
+        font-size: 1rem;
+    }
     .card {
         width: 375px;
         height: 425px;
         margin-bottom: 2.5rem;
         padding: 2.5rem;
         font-size: 2.5rem;
+    }
+    .flip_btn_container {
+        width: 450px;
+    }
+    .modal {
+        width: 450px;
+    }
+    .modal_header h2 {
+        font-size: 2rem;
     }
 }
 
@@ -238,13 +259,9 @@ footer a:hover {
     }
     header h1 {
         font-size: 2rem;
-        text-align: center;
     }
-    .flashcard_header .filter_selections {
-        display: block;
-    }
-    .flashcard_header .filters {
-        display: block;
+    .flashcard_header .filter_results .filter_settings {
+        display: table-row-group;
     }
     .flip_btn_container {
         width: auto;
@@ -259,7 +276,7 @@ footer a:hover {
 
 /* ANIMATIONS */
 
-.fadeIn {
+.fade_in {
     opacity: 0;
     animation: fadeIn 0.25s forwards;
 }
@@ -272,7 +289,7 @@ footer a:hover {
     }
 }
 
-.fadeOut {
+.fade_out {
     opacity: 1;
     animation: fadeOut 0.25s forwards;
 }
