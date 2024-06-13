@@ -13,118 +13,26 @@
     --answer-text:#A9A9A9;
 }
 
-.primaryColor {
-    background-color: var(--primary-color);
-}
-.secondaryColor {
+.secondary_color {
     background-color: var(--secondary-color);
 }
-.secondaryColor:hover {
+.secondary_color:hover {
     background-color: var(--secondary-color-hover);
 }
-.secondaryColor:active {
+.secondary_color:active {
     background-color: var(--secondary-color-active)
 }
-.tertiaryColor {
+.tertiary_color {
     background-color: var(--tertiary-color);
 }
-.tertiaryColor:hover {
+.tertiary_color:hover {
     background-color: var(--tertiary-color-hover);
 }
-.tertiaryColor:active {
+.tertiary_color:active {
     background-color: var(--secondary-color-active);
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-family: 1rem;
-}
-
-#app {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-header {
-    display: flex;
-    padding: 1rem;
-    align-items: center;
-    color: var(--light-text);
-    font-size: 2rem;
-}
-header .info td {
-    padding-left: 0.5rem;
-    font-size: 1rem;
-}
-header h1 {
-    display: flex;
-    flex-grow: 1;
-    margin: 0;
-    padding: 0 1.5rem;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 400;
-    text-align: center;
-}
-header .filters {
-    display: flex;
-    flex-grow: 1;
-    height: 100%;
-    align-items: center;
-    justify-content: end;
-}
-header .btn {
-    padding: 0.5rem;
-    background-color: var(--neutral-color);
-    color: var(--dark-text);
-    font-size: 1.5rem;
-}
-
-main {
-    flex-grow: 1;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.word, .btnContainer {
-    display: flex;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-}
-.word {
-    margin-top: 2rem;
-    padding: 2rem;
-    min-width: 350px;
-    border: 2px solid var(--neutral-color);
-    border-radius: 0.25rem;
-    font-size: 2.5rem;
-}
-
-footer {
-    padding: 0.5rem;
-    color: var(--light-text);
-    text-align: center;
-}
-footer a {
-    color: var(--light-text);
-    text-decoration: none;
-}
-footer a:hover {
-    color: var(--light-text);
-    text-decoration: underline;
-}
+/* BUTTONS */
 
 .btn {
     display: inline-block;
@@ -139,8 +47,108 @@ footer a:hover {
     cursor: pointer;
 }
 
-.jp {
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: 1rem;
+}
+
+header {
+    padding: 0.5rem 1rem;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+header h1 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-align: left;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh
+}
+
+.flashcard_header {
+    display: flex;
+    flex-direction: row;
+}
+.flashcard_header .filter_selections {
+    display: none;
+}
+.flashcard_header .filter_selections td {
+    padding-left: 0.5rem;
+    font-size: 1rem;
+}
+.flashcard_header h1 {
+    flex-grow: 1;
+}
+.flashcard_header .filters {
+    display: none;
+}
+.flashcard_header .filters .btn {
+    padding: 0.75rem;
+    background-color: var(--neutral-color);
+    color: var(--dark-text);
+    font-size: 1.25rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    width: 75%;
+    height: 50%;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--neutral-color);
+    font-size: 2.5rem;
+    text-align: center;
+}
+.card .answer {
     color: var(--answer-text);
+}
+
+.flip_btn_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.flip_btn_container > div {
+    padding: 0 0.75rem;
+    width: inherit;
+}
+.flip_btn_container button {
+    width: 100%;
+}
+
+footer {
+    display: none;
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+}
+footer a {
+    color: var(--light-text);
+    text-decoration: none;
+}
+footer a:hover {
+    color: var(--light-text);
+    text-decoration: underline;
 }
 
 .modalContainer {
@@ -206,23 +214,51 @@ footer a:hover {
     font-size: 1rem;
 }
 
-/* MEDIA QUERIES */
-@media (min-width: 576px) {
-    header .filters {
-        flex-grow: 0;
+/*
+ * MEDIA QUERIES
+ *
+ * Values taken from Bootstrap 5.X
+ */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .card {
+        width: 375px;
+        height: 425px;
+        margin-bottom: 2.5rem;
+        padding: 2.5rem;
+        font-size: 2.5rem;
     }
 }
 
-@media (min-width: 768px) {
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    header {
+        padding: 0.75rem;
+    }
     header h1 {
         font-size: 2rem;
+        text-align: center;
     }
-    .word {
-        font-size: 3.5rem;
+    .flashcard_header .filter_selections {
+        display: block;
+    }
+    .flashcard_header .filters {
+        display: block;
+    }
+    .flip_btn_container {
+        width: auto;
+    }
+    .flip_btn_container button {
+        width: auto;
+    }
+    footer {
+        display: block;
     }
 }
 
 /* ANIMATIONS */
+
 .fadeIn {
     opacity: 0;
     animation: fadeIn 0.25s forwards;

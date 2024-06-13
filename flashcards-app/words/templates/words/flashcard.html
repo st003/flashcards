@@ -6,9 +6,9 @@
 
 {% block public %}
 <div id="app">
-    <header class="primaryColor">
-        <div>
-            <table class="info">
+    <header class="flashcard_header">
+        <div class="filter_selections">
+            <table>
                 <tr>
                     <td>Category:</td>
                     <td>[[ currentCategory ]]</td>
@@ -23,28 +23,26 @@
                 </tr>
             </table>
         </div>
-        <h1>Language Learning Flash Cards</h1>
+        <h1>Flash Cards</h1>
         <div class="filters">
             <button class="btn" @click="openFilters()">Filters</button>
         </div>
     </header>
     <main>
-        <div v-if="error" class="content">
-            <div class="word">
-                <span>No results were returned</span>
-            </div>
-            <div class="btnContainer">
-                <button class="btn tertiaryColor" @click="openFilters()">Open Filters</button>
-            </div>
-        </div>
-        <div v-else class="content">
-            <div class="word">
-                <span v-if="cardIsFlipped" class="jp">[[ jp ]]</span>
+        <div class="card">
+            <div v-if="error">No results were returned</div>
+            <div v-else>
+                <span v-if="cardIsFlipped" class="answer">[[ jp ]]</span>
                 <span v-else>[[ en ]]</span>
             </div>
-            <div class="btnContainer">
-                <button v-if="cardIsFlipped" class="btn tertiaryColor" @click="nextCard()">Next Card</button>
-                <button v-else class="btn secondaryColor" @click="flipCard()">Flip Card</button>
+        </div>
+        <div class="flip_btn_container">
+            <div v-if="error">
+                <button class="btn tertiary_color" @click="openFilters()">Open Filters</button>
+            </div>
+            <div v-else>
+                <button v-if="cardIsFlipped" class="btn tertiary_color" @click="nextCard()">Next Card</button>
+                <button v-else class="btn secondary_color" @click="flipCard()">Flip Card</button>
             </div>
         </div>
     </main>
