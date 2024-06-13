@@ -58,12 +58,13 @@ body {
 }
 
 header {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     align-items: center;
     background-color: var(--primary-color);
     color: var(--light-text);
 }
 header h1 {
+    margin: 0.5rem 0;
     font-size: 1.25rem;
     font-weight: 400;
     text-align: center;
@@ -89,11 +90,8 @@ header h1 {
 .flashcard_header h1 {
     flex-grow: 1;
 }
-.flashcard_header .filters {
-    margin-right: 0.25rem;
-}
 .flashcard_header .filters .filters_btn {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     background-color: transparent;
     border: none;
     color: var(--light-text);
@@ -104,21 +102,26 @@ main {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    align-items: center;
-    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card {
     display: flex;
-    width: 75%;
-    height: 50%;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    height: 375px;
+    margin: 1.5rem 1rem;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--neutral-color);
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
+}
+.card > div {
+    margin: 0 1rem;
 }
 .card .answer {
     color: var(--answer-text);
@@ -126,15 +129,17 @@ main {
 
 .flip_btn_container {
     display: flex;
+    width: inherit;
+    margin-bottom: 1rem;
     justify-content: center;
-    width: 100%;
 }
 .flip_btn_container > div {
-    padding: 0 1.25rem;
-    width: inherit;
+    margin: 0 1rem;
+    width: 100%;
 }
 .flip_btn_container button {
     width: 100%;
+    font-size: 2rem;
 }
 
 footer {
@@ -205,7 +210,7 @@ footer a:hover {
     margin-bottom: 1.5rem;
 }
 .modal_footer {
-    padding: 0.75rem 1rem;
+    padding: 1rem 1rem 0.75rem 1rem;
     border-top: 1px solid var(--neutral-color);
     text-align: center;
 }
@@ -234,15 +239,21 @@ footer a:hover {
         padding-right: 0.75rem;
         font-size: 1rem;
     }
+    .content {
+        align-items: center;
+        justify-content: center;
+    }
     .card {
-        width: 375px;
+        width: 450px;
         height: 425px;
-        margin-bottom: 2.5rem;
-        padding: 2.5rem;
+        margin: 2rem 0;
         font-size: 2.5rem;
     }
     .flip_btn_container {
         width: 450px;
+    }
+    .flip_btn_container > div {
+        margin: 0;
     }
     .modal {
         width: 450px;
@@ -254,20 +265,17 @@ footer a:hover {
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    header {
-        padding: 0.75rem;
-    }
     header h1 {
         font-size: 2rem;
     }
     .flashcard_header .filter_results .filter_settings {
         display: table-row-group;
     }
-    .flip_btn_container {
-        width: auto;
+    .card {
+        width: 500px;
     }
-    .flip_btn_container button {
-        width: auto;
+    .flip_btn_container {
+        width: 500px;
     }
     footer {
         display: block;

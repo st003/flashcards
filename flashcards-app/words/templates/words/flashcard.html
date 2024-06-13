@@ -36,20 +36,22 @@
         </div>
     </header>
     <main>
-        <div class="card">
-            <div v-if="error">No results were returned</div>
-            <div v-else>
-                <span v-if="cardIsFlipped" class="answer">[[ jp ]]</span>
-                <span v-else>[[ en ]]</span>
+        <div class="content">
+            <div class="card">
+                <div v-if="error">No results were returned</div>
+                <div v-else>
+                    <span v-if="cardIsFlipped" class="answer">[[ jp ]]</span>
+                    <span v-else>[[ en ]]</span>
+                </div>
             </div>
-        </div>
-        <div class="flip_btn_container">
-            <div v-if="error">
-                <button class="btn" @click="openFilters()">Open Filters</button>
-            </div>
-            <div v-else>
-                <button v-if="cardIsFlipped" class="btn tertiary_color" @click="nextCard()">Next Card</button>
-                <button v-else class="btn secondary_color" @click="flipCard()">Flip Card</button>
+            <div class="flip_btn_container">
+                <div v-if="error">
+                    <button class="btn" @click="openFilters()">Open Filters</button>
+                </div>
+                <div v-else>
+                    <button v-if="cardIsFlipped" class="btn tertiary_color" @click="nextCard()">Next Card</button>
+                    <button v-else class="btn secondary_color" @click="flipCard()">Flip Card</button>
+                </div>
             </div>
         </div>
     </main>
