@@ -104,6 +104,13 @@ main {
     flex-grow: 1;
 }
 
+.get_started_container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -112,7 +119,7 @@ main {
 
 .card {
     display: flex;
-    height: 375px;
+    height: 325px;
     margin: 1.5rem 1rem;
     align-items: center;
     justify-content: center;
