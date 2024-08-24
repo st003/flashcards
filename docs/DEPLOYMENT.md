@@ -187,3 +187,21 @@ sudo certbot --nginx
 ```
 
 Follow the prompts to select the application's host name. Your site should now fully installed.
+
+#### Automatic TLS Certificate Renewal
+
+Edit the system crontab with the command:
+
+```
+sudo nano /etc/crontab
+```
+
+and paste in the line:
+
+```
+0 0,12 * * * root /path/to/python -c 'import random; import time; time.sleep(random.random() * 3600)' && sudo certbot renew -q
+```
+
+This command will use the Python interpreter to run certbot's renew routine twice a day. The renew routine checks for any certificates expiring 30 days or less from the current date and then automatically renews them.
+
+*Note: you will need to determine the path to the Python executable and if the Python version number needs to be listed. Example: Python3*
