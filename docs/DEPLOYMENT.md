@@ -190,18 +190,43 @@ Follow the prompts to select the application's host name. Your site should now f
 
 #### Automatic TLS Certificate Renewal
 
-Edit the system crontab with the command:
+To schedule automatic renewal of Let's Encrypt TLS certificates, create a systemd service and timer. Create a new file called 'certbot-renew.service' with the contents:
 
 ```
-sudo nano /etc/crontab
+[Unit]
+Description=Renew certificates acquired via Certbot
+Documentation=https://eff-certbot.readthedocs.io/en/stable/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot -q renew
+PrivateTmp=true
 ```
 
-and paste in the line:
+Save this file into the systemd configuration directory, typically located in '/etc/systemd/system/'.
+
+*Note: you may need to verify the correct path to certbot for your installation*
+
+Then create a second file called 'certbot-renew.timer' with the contents:
 
 ```
-0 0,12 * * * root /path/to/python -c 'import random; import time; time.sleep(random.random() * 3600)' && sudo certbot renew -q
+[Unit]
+Description=Run Certbot twice daily
+
+[Timer]
+OnCalendar=*-*-* 00/12:00:00
+RandomizedDelaySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
 ```
 
-This command will use the Python interpreter to run certbot's renew routine twice a day. The renew routine checks for any certificates expiring 30 days or less from the current date and then automatically renews them.
+Save this file into the systemd configuration directory as well. Finally start and enable the timer using the commands:
 
-*Note: you will need to determine the path to the Python executable and if the Python version number needs to be listed. Example: Python3*
+```
+systemctl start certbot-renew.timer
+systemctl enable certbot-renew.timer
+```
+
+Certbot will check for eligible renewals approximately every 12 hours.
