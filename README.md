@@ -8,7 +8,7 @@ Prior knowledge of Django, Django REST Framework, and Vue.js is required. These 
 
 ### Prerequisites
 
-Python3.8+
+Python 3.10+
 
 ### Installing
 
